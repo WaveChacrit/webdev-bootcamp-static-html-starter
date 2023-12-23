@@ -115,7 +115,12 @@
       </div>
       <section>
         <div>
-          <div></div>
+          <div class="flex justify-center items-center w-full gap-3 mt-6">
+            <div class="rounded-full bg-primary h-3 w-3 dot-nav"></div>
+            <div class="rounded-full bg-primary h-3 w-3 dot-nav"></div>
+            <div class="rounded-full bg-primary h-3 w-3 dot-nav"></div>
+            <div class="rounded-full bg-primary h-3 w-3 dot-nav"></div>
+          </div>
         </div>
       </section>
     </main>
@@ -177,6 +182,32 @@
             e.target.elements.email.value +
             ") has been subscribed to mailing list"
         );
+      }
+
+      let slideNumber = 0;
+
+      function showSlide(n) {
+        const imageSlides = document.getElementsByClassName("my-slides");
+        const dotNavs = document.getElementsByClassName("dot-nav");
+
+        if (n >= imageSlides.length) {
+          slideNumber = 0;
+        } else if (n < 0) {
+          slideNumber = imageSlides.length - 1;
+        }
+
+        for (let i = 0; i < imageSlides.length; i++) {
+          imageSlides[i].style.display = "none";
+
+          dotNavs[i].classList.remove("bg-primary");
+          dotNavs[i].classList.add("border-primary");
+          dotNavs[i].classList.add("border-[1px]");
+        }
+        imageSlides[slideNumber].style.display = "block";
+
+        dotNavs[slideNumber].classList.add("bg-primary");
+        dotNavs[slideNumber].classList.remove("border-primary");
+        dotNavs[slideNumber].classList.remove("border-[1px]");
       }
     </script>
   </body>
