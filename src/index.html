@@ -178,13 +178,17 @@
     <script>
       function onSubmit(e) {
         alert(
-          "You(" +
-            e.target.elements.email.value +
-            ") has been subscribed to mailing list"
+          `You (${e.target.elements.myEmail.value}) has been subscribed to mailing list`
         );
       }
 
       let slideNumber = 0;
+      showSlide(slideNumber);
+
+      function increaseSlideNumber(n) {
+        slideNumber += n;
+        showSlide(slideNumber);
+      }
 
       function showSlide(n) {
         const imageSlides = document.getElementsByClassName("my-slides");
@@ -194,6 +198,8 @@
           slideNumber = 0;
         } else if (n < 0) {
           slideNumber = imageSlides.length - 1;
+        } else {
+          slideNumber = n;
         }
 
         for (let i = 0; i < imageSlides.length; i++) {
